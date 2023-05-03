@@ -42,4 +42,3 @@ print(falar_bom_dia('Joao'))
 for nome in ['Maria', 'Carlos', 'Yasmim', 'Anna']:
     print(falar_bom_dia(nome))
     
-
