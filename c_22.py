@@ -24,12 +24,36 @@ class Place:
     
     def __str__(self) -> str:
         return f'{self.x}, {self.y}'
-        return
     
 
     def __repr__(self) -> str:
         class_name = type(self).__name__
         return f'{class_name=}({self.x=}, {self.y=})'
+    
+
+    def __add__(self, other):
+        '''
+            This will help with '+' below.
+
+        '''
+        
+        new_x = self.x + other.x
+        new_y = self.y + other.y
+
+        return Place(new_x, new_y)
+    
+
+    def __gt__(self, other):
+        '''
+            This will help with '>' or '<' below.
+        
+        '''
+
+        sum_self = self.x + self.y
+        sum_other = other.x + other.y
+
+        return sum_self > sum_other
+            
     
 
 p1 = Place(1, 2)
@@ -42,3 +66,9 @@ print(p2)
 print(p1.__repr__())
 print(repr(p2))
 print(f'{p2!r}')
+
+p3 = p1 + p2
+
+print(p3)
+
+print(p1 < p2)
