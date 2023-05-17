@@ -54,14 +54,13 @@ class Person(ABC):
         self.name_ = name
 
 
-
     @property
     def get_age(self):
         return self.age_
     
 
     @get_age.setter
-    def get_age(self, name):
+    def get_age(self, age):
         self.age_ = age
 
     
@@ -75,7 +74,7 @@ class Person(ABC):
 
 
 class Account(ABC):
-    def __init__(self, agency, account_number, balance) -> None:
+    def __init__(self, agency: int, account_number: int, balance: float = 0) -> None:
         super().__init__()
 
         self.agency_ = agency
@@ -84,7 +83,7 @@ class Account(ABC):
         self.customer_ = None
     
     @abstractmethod
-    def deposit(self, amount):
+    def deposit(self, amount: float) -> None:
         self.balance_ += amount
     
 
@@ -94,7 +93,7 @@ class Account(ABC):
     #Só será possível sacar se passar na autenticação do banco (descrita acima)
     #Banco autentica por um método.
     @abstractmethod
-    def withdraw(self, amount, bank):
+    def withdraw(self, amount: float, bank) -> bool:
         if self.agency_ in bank.agencies_:
             if self.customer_ in bank.customers_:
                 if (self.account_number_ == bank.accounts_[self.customer_][0].__dict__['account_number_']) or \
