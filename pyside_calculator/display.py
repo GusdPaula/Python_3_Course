@@ -5,6 +5,7 @@ from PySide6.QtCore import Qt
 class Display(QLineEdit):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.setStyleDisplay()
 
     
     def setStyleDisplay(self):
